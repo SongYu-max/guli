@@ -1,10 +1,10 @@
 package com.atguigu.eduservice.controller;
 
 
+import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.entity.EduTeacher;
 import com.atguigu.eduservice.service.EduTeacherService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,10 +36,10 @@ public class EduTeacherController {
     //rest风格
     @ApiOperation(value = "所有讲师列表")
     @GetMapping("findAll")
-    public List findAllTeacher() {
+    public R findAllTeacher() {
         //调用service的方法实现查询所有的操作
         List<EduTeacher> list = teacherService.list(null);
-        return list;
+        return R.ok().data("items",list);
     }
 //
 //    //2 逻辑删除讲师的方法
