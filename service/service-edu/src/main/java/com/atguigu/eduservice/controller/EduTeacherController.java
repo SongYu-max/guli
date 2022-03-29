@@ -67,11 +67,11 @@ public class EduTeacherController {
         //创建page对象
         Page<EduTeacher> pageTeacher = new Page<>(current,limit);
 
-        try {
-            int i = 10/0;
-        } catch (Exception e) {
-            throw new GuliException(20001,"出现自定义异常。。。");
-        }
+//        try {
+//            int i = 10/0;
+//        } catch (Exception e) {
+//            throw new GuliException(20001,"出现自定义异常。。。");
+//        }
         //调用方法实现分页
         //调用方法时候，底层封装，把分页所有数据封装到pageTeacher对象里面
         teacherService.page(pageTeacher,null);
@@ -117,6 +117,7 @@ public class EduTeacherController {
             wrapper.le("gmt_create",end);
         }
 
+        wrapper.orderByDesc("gmt_create");
         //调用方法实现条件查询分页
         teacherService.page(pageTeacher,wrapper);
 
