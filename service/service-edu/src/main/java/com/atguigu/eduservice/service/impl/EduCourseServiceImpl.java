@@ -25,13 +25,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Autowired
     EduCourseDescriptionService eduCourseDescriptionService;
+
     @Override
-    public void addCourseInfo(CourseInfoVo courseInfoVo) {
+    public String addCourseInfo(CourseInfoVo courseInfoVo) {
         EduCourse eduservice = new EduCourse();
-        BeanUtils.copyProperties(courseInfoVo,eduservice);
+        BeanUtils.copyProperties(courseInfoVo, eduservice);
         int rows = baseMapper.insert(eduservice);
-        if (rows <=0 ){
-            throw new GuliException(20001,"添加课程失败。");
+        if (rows <= 0) {
+            throw new GuliException(20001, "添加课程失败。");
         }
         String description = courseInfoVo.getDescription();
         EduCourseDescription eduCourseDescription = new EduCourseDescription();
@@ -39,5 +40,6 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         String id = eduservice.getId();
         eduCourseDescription.setId(id);
         eduCourseDescriptionService.save(eduCourseDescription);
+        return id;
     }
 }

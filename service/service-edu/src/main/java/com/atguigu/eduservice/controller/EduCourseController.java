@@ -24,11 +24,11 @@ public class EduCourseController {
     private EduCourseService eduCourseService;
 
     @PostMapping("/addCourseInfo")
-    public R addCourseInfo(@RequestBody CourseInfoVo courseInfoVo){
+    public R addCourseInfo(@RequestBody CourseInfoVo courseInfoVo) {
 
-        eduCourseService.addCourseInfo(courseInfoVo);
+        String id = eduCourseService.addCourseInfo(courseInfoVo);
 
-        return R.ok();
+        return R.ok().data("courseId", id);
     }
 
 }
