@@ -28,7 +28,7 @@ public class EduChapterController {
     public R getChapterVideo(@PathVariable String courseId){
         List<ChapterVo> list = eduChapterService.getChapterVideo(courseId);
 
-        return R.ok().data("list",list);
+        return R.ok().data("allChapterVideo",list);
     }
 
 }
