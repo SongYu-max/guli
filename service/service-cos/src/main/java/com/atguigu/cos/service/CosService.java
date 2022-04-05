@@ -1,6 +1,9 @@
 package com.atguigu.cos.service;
 
+import com.qcloud.cos.model.COSObjectSummary;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * @author SongYu
@@ -16,5 +19,5 @@ public interface CosService {
 
     String loaddownOssFile(String filename);
 
-    String getlist(String filePath, String filename);
+    List<COSObjectSummary> getlist(String filePath, String filename);
 }

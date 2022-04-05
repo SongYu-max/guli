@@ -2,9 +2,11 @@ package com.atguigu.cos.controller;
 
 import com.atguigu.commonutils.R;
 import com.atguigu.cos.service.CosService;
+import com.qcloud.cos.model.COSObjectSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
 
 /**
  * @author SongYu
@@ -30,12 +32,13 @@ public class CosController {
         return R.ok().data("url",url);
     }
 
+    //获取文件列表
     @GetMapping("getlist")
     public R getlist(String filePath, String filename) {
         //获取上传文件  MultipartFile
         //返回上传到oss的路径
-        String url = cosService.getlist(filePath,filename);
-        return R.ok().data("url",url);
+        List<COSObjectSummary> list = cosService.getlist(filePath,filename);
+        return R.ok().data("list",list);
     }
     //文件下载                      //todo 下载目前还没测通
     @PostMapping("/loaddown")
