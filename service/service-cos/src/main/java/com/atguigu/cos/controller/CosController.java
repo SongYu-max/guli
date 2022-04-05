@@ -34,11 +34,11 @@ public class CosController {
 
     //获取文件列表
     @GetMapping("getlist")
-    public R getlist(String filePath, String filename) {
+    public List<COSObjectSummary> getlist(String filePath, String filename) {
         //获取上传文件  MultipartFile
         //返回上传到oss的路径
         List<COSObjectSummary> list = cosService.getlist(filePath,filename);
-        return R.ok().data("list",list);
+        return list;
     }
     //文件下载                      //todo 下载目前还没测通
     @PostMapping("/loaddown")
