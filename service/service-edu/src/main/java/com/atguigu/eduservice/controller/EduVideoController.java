@@ -2,6 +2,7 @@ package com.atguigu.eduservice.controller;
 
 
 import com.atguigu.commonutils.R;
+import com.atguigu.eduservice.entity.EduChapter;
 import com.atguigu.eduservice.entity.EduVideo;
 import com.atguigu.eduservice.service.EduVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,12 @@ public class EduVideoController {
     public R deleteVideo(@PathVariable String videoId){
         eduVideoService.removeById(videoId);
         return R.ok();
+    }
+    //根据小节id查询
+    @GetMapping("getVideoInfo/{videoId}")
+    public R getVideoInfo(@PathVariable String videoId){
+        EduVideo eduVideo = eduVideoService.getById(videoId);
+        return R.ok().data("video",eduVideo);
     }
 }
 
