@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author SongYu
  * @version 1.0.0
  * @ClassName CosApplication.java
- * @Description TODO
+ * @Description
  * @createTime 2022年04月04日 15:04:00
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)

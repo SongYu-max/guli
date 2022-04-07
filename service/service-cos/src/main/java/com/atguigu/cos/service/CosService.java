@@ -9,7 +9,7 @@ import java.util.List;
  * @author SongYu
  * @version 1.0.0
  * @ClassName CosService.java
- * @Description TODO
+ * @Description
  * @createTime 2022年04月04日 15:20:00
  */
 public interface CosService {

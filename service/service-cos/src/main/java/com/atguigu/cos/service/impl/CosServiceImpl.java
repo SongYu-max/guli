@@ -25,7 +25,7 @@ import static com.qcloud.cos.demo.BucketRefererDemo.cosClient;
  * @author SongYu
  * @version 1.0.0
  * @ClassName CosServiceImpl.java
- * @Description TODO
+ * @Description
  * @createTime 2022年04月04日 15:21:00
  */
 @Service

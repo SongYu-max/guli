@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @author SongYu
  * @version 1.0.0
  * @ClassName CosConstantPropertiesUtils.java
- * @Description TODO
+ * @Description
  * @createTime 2022年04月04日 15:22:00
  */
 @Component

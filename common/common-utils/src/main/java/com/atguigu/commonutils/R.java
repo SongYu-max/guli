@@ -9,7 +9,7 @@ import java.util.Map;
  * @author SongYu
  * @version 1.0.0
  * @ClassName R.java
- * @Description TODO
+ * @Description
  * @createTime 2022年03月24日 23:24:00
  */
 //统一返回结果的类
