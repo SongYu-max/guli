@@ -2,12 +2,15 @@ package com.atguigu.eduservice.controller;
 
 
 import com.atguigu.commonutils.R;
+import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.vo.CourseInfoVo;
 import com.atguigu.eduservice.entity.vo.CoursePublishVo;
 import com.atguigu.eduservice.service.EduCourseDescriptionService;
 import com.atguigu.eduservice.service.EduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -48,10 +51,34 @@ public class EduCourseController {
         return R.ok();
     }
 
-    @GetMapping("getPublicCourseInfo/{id}")
+    @GetMapping("getPublishCourseInfo/{id}")
     public R getPublicCourseInfo(@PathVariable String id){
         CoursePublishVo coursePublishVo = eduCourseService.getPublicCourseInfo(id);
         return R.ok().data("publishCourse",coursePublishVo);
+    }
+    //课程最终发布
+    //修改课程状态 status字段   Draft为未发布  normal为已发布
+    @PostMapping("publishCourse/{id}")
+    public R publishCourse(@PathVariable String id){
+        EduCourse eduCourse = new EduCourse();
+        eduCourse.setId(id);
+        eduCourse.setStatus("Normal");
+        eduCourseService.updateById(eduCourse);
+        return R.ok();
+    }
+
+    //课程列表 基本实现
+    //TODO 完善条件查询带分页
+    @GetMapping
+    public R getCourseList(){
+        List<EduCourse> list = eduCourseService.list(null);
+        return R.ok().data("list",list);
+    }
+    //课程删除
+    @DeleteMapping("")
+    public R deleteCourse(){
+
+        return R.ok();
     }
 }
 
