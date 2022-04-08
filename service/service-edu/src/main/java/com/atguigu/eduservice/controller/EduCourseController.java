@@ -75,9 +75,9 @@ public class EduCourseController {
         return R.ok().data("list",list);
     }
     //课程删除
-    @DeleteMapping("")
-    public R deleteCourse(){
-
+    @DeleteMapping("{courseId}")
+    public R deleteCourse(@PathVariable String courseId){
+        eduCourseService.removeCourse(courseId);
         return R.ok();
     }
 }
