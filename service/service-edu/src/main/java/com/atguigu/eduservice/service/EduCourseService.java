@@ -3,7 +3,10 @@ package com.atguigu.eduservice.service;
 import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.vo.CourseInfoVo;
 import com.atguigu.eduservice.entity.vo.CoursePublishVo;
+import com.atguigu.eduservice.entity.vo.CourseQuery;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -24,4 +27,6 @@ public interface EduCourseService extends IService<EduCourse> {
     CoursePublishVo getPublicCourseInfo(String id);
 
     void removeCourse(String courseId);
+
+    List<EduCourse> getCourseCondition(long current, long limit, CourseQuery courseQuery);
 }

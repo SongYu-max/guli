@@ -5,6 +5,7 @@ import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.vo.CourseInfoVo;
 import com.atguigu.eduservice.entity.vo.CoursePublishVo;
+import com.atguigu.eduservice.entity.vo.CourseQuery;
 import com.atguigu.eduservice.service.EduCourseDescriptionService;
 import com.atguigu.eduservice.service.EduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,12 +69,21 @@ public class EduCourseController {
     }
 
     //课程列表 基本实现
-    //TODO 完善条件查询带分页
     @GetMapping
     public R getCourseList(){
         List<EduCourse> list = eduCourseService.list(null);
         return R.ok().data("list",list);
     }
+
+    //TODO 完善条件查询带分页
+    @PostMapping("getCourseCondition/{current}/{limit}")
+    public R getCourseCondition(@PathVariable long current, @PathVariable long limit,
+                                @RequestBody CourseQuery courseQuery){
+        List<EduCourse> list = eduCourseService.getCourseCondition(current,limit,courseQuery);
+        int total = list.size();
+        return R.ok().data("rows",list).data("total",total);
+    }
+
     //课程删除
     @DeleteMapping("{courseId}")
     public R deleteCourse(@PathVariable String courseId){

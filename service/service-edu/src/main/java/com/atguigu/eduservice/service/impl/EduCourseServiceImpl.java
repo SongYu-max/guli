@@ -4,16 +4,21 @@ import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.EduCourseDescription;
 import com.atguigu.eduservice.entity.vo.CourseInfoVo;
 import com.atguigu.eduservice.entity.vo.CoursePublishVo;
+import com.atguigu.eduservice.entity.vo.CourseQuery;
 import com.atguigu.eduservice.mapper.EduCourseMapper;
 import com.atguigu.eduservice.service.EduChapterService;
 import com.atguigu.eduservice.service.EduCourseDescriptionService;
 import com.atguigu.eduservice.service.EduCourseService;
 import com.atguigu.eduservice.service.EduVideoService;
 import com.atguigu.servicebase.exceptionhander.GuliException;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -97,5 +102,21 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         if (result == 0){
             throw new GuliException(20001,"删除失败");
         }
+    }
+
+    @Override
+    public List<EduCourse> getCourseCondition(long current, long limit, CourseQuery courseQuery) {
+        Page<EduCourse> pageCourse = new Page<>(current, limit);
+        QueryWrapper wrapper = new QueryWrapper();
+        if (courseQuery.getTitle()!=null){
+            wrapper.like("title",courseQuery.getTitle());
+        }
+        if (courseQuery.getStatus()!=null && courseQuery.getStatus() != ""){
+            wrapper.eq("status",courseQuery.getStatus());
+        }
+        wrapper.orderByDesc("gmt_create");
+        baseMapper.selectPage(pageCourse,wrapper);
+        List<EduCourse> list = pageCourse.getRecords();
+        return list;
     }
 }
