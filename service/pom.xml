@@ -15,6 +15,7 @@
         <module>service-edu</module>
         <module>service-oss</module>
         <module>service-cos</module>
+        <module>service-vod</module>
     </modules>
 
     <dependencies>
