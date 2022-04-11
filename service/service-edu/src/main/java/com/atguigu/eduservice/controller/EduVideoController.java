@@ -2,9 +2,11 @@ package com.atguigu.eduservice.controller;
 
 
 import com.atguigu.commonutils.R;
+import com.atguigu.eduservice.client.VodClient;
 import com.atguigu.eduservice.entity.EduChapter;
 import com.atguigu.eduservice.entity.EduVideo;
 import com.atguigu.eduservice.service.EduVideoService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/eduservice/video")
 @CrossOrigin
 public class EduVideoController {
+    @Autowired
+    private VodClient vodClient;
     @Autowired
     private EduVideoService eduVideoService;
 
@@ -44,9 +48,14 @@ public class EduVideoController {
         }
     }
     //删除
-    //TODO 后面这个方法需要完善，删小节的时候，同时把里面的视频删除
     @DeleteMapping("{videoId}")
     public R deleteVideo(@PathVariable String videoId){
+        //根据小节id获取视频id，调用删除视频方法
+        EduVideo eduVideo = eduVideoService.getById(videoId);
+        String videoSourceId = eduVideo.getVideoSourceId();
+        if (!StringUtils.isEmpty(videoSourceId)){
+            vodClient.removeAlyVideo(videoSourceId);
+        }
         eduVideoService.removeById(videoId);
         return R.ok();
     }
