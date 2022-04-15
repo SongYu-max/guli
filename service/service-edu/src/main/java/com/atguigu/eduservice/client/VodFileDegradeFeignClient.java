@@ -1,6 +1,7 @@
 package com.atguigu.eduservice.client;
 
 import com.atguigu.commonutils.R;
+import org.springframework.stereotype.Component;
 
 /**
  * @author SongYu
@@ -9,6 +10,7 @@ import com.atguigu.commonutils.R;
  * @Description TODO
  * @createTime 2022年04月11日 23:22:00
  */
+@Component
 public class VodFileDegradeFeignClient implements VodClient{
     //feign接口出错后，会执行这里
     @Override
