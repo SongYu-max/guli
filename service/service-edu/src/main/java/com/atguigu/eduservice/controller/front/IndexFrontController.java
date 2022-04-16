@@ -7,6 +7,7 @@ import com.atguigu.eduservice.service.EduCourseService;
 import com.atguigu.eduservice.service.EduTeacherService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/eduservice/indexfront")
+@CrossOrigin
 public class IndexFrontController {
     @Autowired
     EduCourseService eduCourseService;
@@ -37,7 +39,7 @@ public class IndexFrontController {
         queryWrapper.orderByDesc("id");
         queryWrapper.last("limit 4");
         List<EduTeacher> teacherList = eduTeacherService.list(queryWrapper);
-
+        System.out.println("查询名师和热门课程的后台接口已执行。");
         return R.ok().data("eduList",eduList).data("teacherList",teacherList);
     }
 }
