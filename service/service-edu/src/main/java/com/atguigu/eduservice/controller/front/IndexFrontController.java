@@ -39,7 +39,6 @@ public class IndexFrontController {
         queryWrapper.orderByDesc("id");
         queryWrapper.last("limit 4");
         List<EduTeacher> teacherList = eduTeacherService.list(queryWrapper);
-        System.out.println("查询名师和热门课程的后台接口已执行。");
         return R.ok().data("eduList",eduList).data("teacherList",teacherList);
     }
 }

@@ -22,7 +22,7 @@ import java.util.List;
 public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner> implements CrmBannerService {
 
     //查询所有banner
-//    @Cacheable(value = "banner",key = "'selectIndexList'")
+    @Cacheable(value = "banner",key = "'selectIndexList'")
     @Override
     public List<CrmBanner> selectAllBanner() {
 
