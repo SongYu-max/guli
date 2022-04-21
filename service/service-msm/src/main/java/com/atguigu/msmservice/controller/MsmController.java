@@ -31,7 +31,7 @@ public class MsmController {
 
     //发送短信的方法
     @GetMapping("send/{phone}")
-    public R sendMsm(@PathVariable String phone) {
+    public R sendMsm(@PathVariable String phone) throws Exception {
         //1 从redis获取验证码，如果获取到直接返回
         String code = redisTemplate.opsForValue().get(phone);
         if(!StringUtils.isEmpty(code)) {
