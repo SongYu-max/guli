@@ -11,5 +11,11 @@
     <packaging>pom</packaging>
     <artifactId>common-utils</artifactId>
 
-
+<dependencies>
+    <!-- JWT-->
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+    </dependency>
+</dependencies>
 </project>
