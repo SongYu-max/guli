@@ -37,6 +37,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     private EduVideoService eduVideoService;
     @Autowired
     private EduChapterService eduChapterService;
+    @Autowired
+    private EduCourseService eduCourseService;
 
     @Override
     public String addCourseInfo(CourseInfoVo courseInfoVo) {
@@ -118,5 +120,13 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         baseMapper.selectPage(pageCourse,wrapper);
         List<EduCourse> list = pageCourse.getRecords();
         return list;
+    }
+
+    @Override
+    public List<EduCourse> getCourseInfoByTeacherId(long teacherId) {
+        QueryWrapper<EduCourse> wrapper = new QueryWrapper<>();
+        wrapper.eq("teacher_id",teacherId);
+        List<EduCourse> eduCourseList =  baseMapper.selectList(wrapper);
+        return eduCourseList;
     }
 }

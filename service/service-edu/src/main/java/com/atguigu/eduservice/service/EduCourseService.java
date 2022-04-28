@@ -29,4 +29,6 @@ public interface EduCourseService extends IService<EduCourse> {
     void removeCourse(String courseId);
 
     List<EduCourse> getCourseCondition(long current, long limit, CourseQuery courseQuery);
+
+    List<EduCourse> getCourseInfoByTeacherId(long teacherId);
 }
