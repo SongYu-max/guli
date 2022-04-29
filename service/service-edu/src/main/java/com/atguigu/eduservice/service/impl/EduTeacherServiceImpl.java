@@ -29,7 +29,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         QueryWrapper<EduTeacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("id");
         baseMapper.selectPage(pageTeacher, queryWrapper);
-//        this.page(pageTeacher,queryWrapper);//todo 这里的这个this指的是什么
+        this.page(pageTeacher,queryWrapper);//todo 这里的这个this指的是什么
 
         //把分页数据放到map集合中
         List<EduTeacher> records = pageTeacher.getRecords();
