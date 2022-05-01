@@ -140,7 +140,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 //2 根据讲师id查询所讲课程
         QueryWrapper<EduCourse> wrapper = new QueryWrapper<>();
         //判断条件值是否为空，不为空拼接
-        if(!StringUtils.isEmpty(courseFrontVo.getSubjectParentId())) { //一级分类
+        if(!StringUtils.isEmpty(courseFrontVo.getSubjectParentId())) {   //一级分类
             wrapper.eq("subject_parent_id",courseFrontVo.getSubjectParentId());
         }
         if(!StringUtils.isEmpty(courseFrontVo.getSubjectId())) { //二级分类
