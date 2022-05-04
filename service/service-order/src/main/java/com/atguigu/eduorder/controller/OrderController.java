@@ -35,7 +35,7 @@ public class OrderController {
         return R.ok().data("orderNo",orderNo);
     }
     //跟据订单id查询订单信息
-    @GetMapping("getOrderInfo/{orderId}")
+    @PostMapping("getOrderInfo/{orderId}")
     public R getOrderInfo(@PathVariable String orderId){
         QueryWrapper wrapper = new QueryWrapper();
         wrapper.eq("orderNo",orderId);
