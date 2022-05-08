@@ -15,6 +15,6 @@ public class VodFileDegradeFeignClient implements VodClient{
     //feign接口出错后，会执行这里
     @Override
     public R removeAlyVideo(String id) {
-        return R.error().message("删除视频出错啦。 。。。！");
+        return R.error().message("删除视频出错啦。。。。！");
     }
 }
