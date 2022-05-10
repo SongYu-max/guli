@@ -31,7 +31,7 @@ public class CourseFrontController {
     private EduChapterService chapterService;
 
     //1 条件查询带分页查询课程
-    @PostMapping("getFrontCourseList/{page}/{limit}")
+    @RequestMapping("getFrontCourseList/{page}/{limit}")
     public R getFrontCourseList(@PathVariable long page, @PathVariable long limit,
                                 @RequestBody(required = false) CourseFrontVo courseFrontVo) {
         Page<EduCourse> pageCourse = new Page<>(page,limit);
