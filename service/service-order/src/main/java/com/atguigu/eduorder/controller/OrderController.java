@@ -27,18 +27,18 @@ public class OrderController {
     private OrderService orderService;
 
     //生成订单的方法
-    @RequestMapping("createOrder/{courseId}")
+    @PostMapping("createOrder/{courseId}")
     public R createOrder(@PathVariable String courseId, HttpServletRequest request) {
         //创建订单，返回订单号（要传给支付表）
         String memberIdByJwtToken = JwtUtils.getMemberIdByJwtToken(request);
         String orderNo = orderService.createOrder(courseId, memberIdByJwtToken);
-        return R.ok().data("orderNo",orderNo);
+        return R.ok().data("orderId",orderNo);
     }
     //跟据订单id查询订单信息
     @PostMapping("getOrderInfo/{orderId}")
     public R getOrderInfo(@PathVariable String orderId){
         QueryWrapper wrapper = new QueryWrapper();
-        wrapper.eq("orderNo",orderId);
+        wrapper.eq("order_no",orderId);
         Order order = orderService.getOne(wrapper);
         return R.ok().data("item",order);
     }
