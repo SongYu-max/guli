@@ -129,7 +129,7 @@ public class PayLogServiceImpl extends ServiceImpl<PayLogMapper, PayLog> impleme
         PayLog payLog = new PayLog();
         payLog.setOrderNo(orderNo);  //订单号
         payLog.setPayTime(new Date()); //订单完成时间
-        payLog.setPayType(1);//支付类型 1微信
+        payLog.setPayType(1);//支付类型  1微信
         payLog.setTotalFee(order.getTotalFee());//总金额(分)
 
         payLog.setTradeState(map.get("trade_state"));//支付状态
