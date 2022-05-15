@@ -42,5 +42,14 @@ public class OrderController {
         Order order = orderService.getOne(wrapper);
         return R.ok().data("item",order);
     }
+    @GetMapping("isBuyCourse/{courseId}/{memberId}")
+    public boolean isBuyCourse(@PathVariable String courseId,@PathVariable String memberId){
+        QueryWrapper wrapper = new QueryWrapper();
+        wrapper.eq("course_id",courseId);
+        wrapper.eq("member_id",memberId);
+        wrapper.eq("status",1);
+        int rows = orderService.count(wrapper);
+        return rows > 0;
+    }
 }
 
