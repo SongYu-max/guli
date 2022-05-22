@@ -33,6 +33,7 @@ public class EduChapter implements Serializable {
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
+
     @ApiModelProperty(value = "课程ID")
     private String courseId;
 
