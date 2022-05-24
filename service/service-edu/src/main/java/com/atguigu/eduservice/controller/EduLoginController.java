@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
  * @Description TODO
  * @createTime 2022年03月28日 21:49:00
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/eduservice/user")
 public class EduLoginController {
