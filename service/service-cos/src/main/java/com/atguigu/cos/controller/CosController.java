@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/educos/filecos")
-@CrossOrigin
+//@CrossOrigin
 public class CosController {
 
     @Autowired

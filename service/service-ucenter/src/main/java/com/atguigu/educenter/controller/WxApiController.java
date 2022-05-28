@@ -26,7 +26,7 @@ import java.net.URLEncoder;
  */
 @Controller
 @RequestMapping("/api/ucenter/wx")
-@CrossOrigin
+//@CrossOrigin
 public class WxApiController {
 
     @Autowired

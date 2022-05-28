@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/eduservice/edu-comment")
-@CrossOrigin
+//@CrossOrigin
 public class EduCommentController {
 
 }

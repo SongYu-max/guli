@@ -25,7 +25,7 @@ import static org.bouncycastle.asn1.x500.style.RFC4519Style.member;
  */
 @RestController
 @RequestMapping("/educenter/member")
-@CrossOrigin
+//@CrossOrigin
 public class UcenterMemberController {
     @Autowired
     UcenterMemberService ucenterMemberService;
